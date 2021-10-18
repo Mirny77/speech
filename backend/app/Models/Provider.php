@@ -33,4 +33,9 @@ class Provider extends Model
     {
         return $this->hasMany(Speed::class);
     }
+    public function emotions()
+    {
+        return $this->hasMany(Emotion::class);
+    }
+    
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoicesTable extends Migration
+class CreateEmotionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('voices', function (Blueprint $table) {
+        Schema::create('emotions', function (Blueprint $table) {
             $table->id();
             $table->string('key')->nullable();
             $table->string('value')->nullable();
@@ -29,6 +29,6 @@ class CreateVoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voices');
+        Schema::dropIfExists('emotions');
     }
 }

@@ -16,7 +16,9 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->string('audio')->nullable();
-            $table->string('text')->nullable();
+            $table->text('text')->nullable();
+            $table->string('lang')->nullable();
+            $table->string('voice')->nullable();
             $table->foreignId('provider_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

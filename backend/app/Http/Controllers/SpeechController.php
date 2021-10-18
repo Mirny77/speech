@@ -18,7 +18,7 @@ class SpeechController extends Controller
    $folderId = 'aje6dhp0jmblr6hjltfi';
 
     $url = "https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize";
-    $post = "text=" .  $text . "&lang=ru-RU&voice=oksana&sampleRateHertz=48000&format=" .$FORMAT_OPUS;
+    $post = "text=" .  $text . "&lang=ru-RU&voice=filipp&speed=0.9&sampleRateHertz=48000&format=" .$FORMAT_OPUS;
     $headers = ['Authorization: Api-Key AQVNxmxyCdl12aM69fK5FmN0Ddkz7TwBaUEWsYjW'];
     $ch = curl_init();
     
@@ -44,11 +44,11 @@ class SpeechController extends Controller
         echo "Error message: " . $decodedResponse["error_message"] . "\r\n";
     } else {
         $respons = file_put_contents("speech.ogg", $response);
-        Storage::put(Str::random(3).'/speech.ogg', $response);
-
+        Storage::put('/'.Str::random(3).'.ogg', $response);
+        curl_close($ch);
         return $response;
     }
-    curl_close($ch);
+   
    }
    public function cnt(){
     $curl = curl_init();
@@ -104,13 +104,14 @@ class SpeechController extends Controller
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json',
         'Accept: application/json',
-        'X-Session-Id: ec4609cb-cf4a-427e-9ca2-a567850b0151'
+        'X-Session-Id: '.$session_id->{'session_id'}
     ),
     ));
 
     $response = curl_exec($curl);
 
     curl_close($curl);
+    
     $data  = json_decode($response);
     Storage::put(Str::random(3).'/aaaaaa.wav', base64_decode($data->{'data'}));
     return $response;
@@ -131,10 +132,12 @@ class SpeechController extends Controller
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
       CURLOPT_POSTFIELDS =>'<speak version=\'1.0\' xml:lang=\'en-US\'>
-        <voice xml:lang=\'en-US\' xml:gender=\'Female\' name=\'en-US-MichelleNeural\'>
-            my voice is my passport verify me
-                  my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my 
-        </voice>
+        <voice xml:lang=\'en-US\' xml:speed=\'1.6\'  name=\'en-US-MichelleNeural\'>
+        <prosody rate="+0.00%">
+
+            my voice is my passport verify memy voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my passport verify me      my voice is my 
+            </prosody>
+            </voice>
     </speak>',
       CURLOPT_HTTPHEADER => array(
         'Content-Type: application/ssml+xml',
