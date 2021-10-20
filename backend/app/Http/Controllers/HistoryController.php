@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\HistoryFilter;
 use App\Models\History;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
@@ -9,12 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class HistoryController extends Controller
 {
-    public function index(Request $request){
-      $params = $request->all('provider_id','voice', 'lang');
+    public function index(HistoryFilter $request){
+
       
 
     
-        $history = History::where('user_id',1)->where($params)->orderByDesc('created_at')->paginate(30);
+        $history = History::filter($request)->where('user_id',1)->orderByDesc('created_at')->with('provider')->paginate(30);
 
         return view('speech.index', ['history'=>$history]);
 
@@ -32,12 +33,15 @@ class HistoryController extends Controller
         ]);
         return $history;
     }
-    public function delete(Request $request){
-        $history = History::where('user_id',1)->where('id',$request->id)->first();
-        Storage::delete($history->audio);
+    public function delete(int $id){
+        $history = History::where('user_id',1)->where('id',$id)->first();
+        if($history){
+            $rep =   str_replace('/storage','', $history->audio);
+           Storage::disk('public')->exists($rep);
+      
         $history->delete();
-       
-        return response()->json('file delete');
+        }
+        return redirect('/');
     }
    
 }

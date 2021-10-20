@@ -154,4 +154,8 @@ class SpeechController extends Controller
     echo $response;
     
    }
+   public function show(){
+
+    return view('speech.show');
+   }
 }

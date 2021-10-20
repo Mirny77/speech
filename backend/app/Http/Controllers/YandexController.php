@@ -25,4 +25,9 @@ class YandexController extends Controller
          YandexJob::dispatch($text, $lang,$speed, $voice,$emotion, $account, $FORMAT_OPUS, $rand);
         return '/storage/yandex/'. $rand .'.ogg';
     }
+    public function check(Request $request){
+      $rep =   str_replace('/storage','', $request->audio);
+       $result = Storage::disk('public')->exists($rep);
+       return $result;
+    }
 }

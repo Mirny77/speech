@@ -17,3 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/',[\App\Http\Controllers\HistoryController::class,'index']);
+Route::post('/history/delete/{id}',[\App\Http\Controllers\HistoryController::class,'delete'])->name('speech.delete');
+Route::get('/speech',[\App\Http\Controllers\SpeechController::class,'show'])->name('speech.show');
