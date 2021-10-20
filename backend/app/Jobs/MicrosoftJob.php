@@ -55,7 +55,7 @@ class MicrosoftJob implements ShouldQueue
           CURLOPT_CUSTOMREQUEST => 'POST',
           CURLOPT_POSTFIELDS =>'<speak version=\'1.0\' xml:lang=\''.$this->lang.'\'>
             <voice xml:lang=\''.$this->lang.'\'   name=\''.$this->voice.'\'>
-            <prosody rate="'.$this->speed.'%">
+            <prosody rate="'.$this->speed.'">
                     '.$this->text.'    
                 </prosody>
                 </voice>

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\History;
+use App\Models\Provider;
 use Illuminate\Support\Facades\Storage;
 use App\Models\UserAccountProvider;
 use Illuminate\Http\Request;
@@ -154,8 +157,30 @@ class SpeechController extends Controller
     echo $response;
     
    }
-   public function show(){
+   public function show(Request $request){
+  if($request->provider){
+  $provider = Provider::where('id',$request->provider)->with('emotions')->with(["voices" => function($q) use($request){
+    $q->where('voices.language_id', '=', $request->lang_id);
+}])->with('formats')->with('speeds')->first();
+
+    return view('speech.show',compact('provider'));
+  }
 
     return view('speech.show');
    }
+
+   public function check(Request $request){
+    $rep =   str_replace('/storage','', $request->audio);
+     $result = Storage::disk('public')->exists($rep);
+     return $result;
+  }
+  public function deleteAudio(Request $request){
+    $history = History::where('audio',$request->audio)->first();
+    if($history){
+    $rep =   str_replace('/storage','', $request->audio);
+     $result = Storage::disk('public')->delete($rep);
+     $history->delete();
+    }
+     return $result;
+  }
 }

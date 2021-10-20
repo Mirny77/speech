@@ -110,7 +110,7 @@ class CntJob implements ShouldQueue
         Storage::put('public/cnt/'. $this->rand .'.wav', base64_decode($data->{'data'}));
         $audio = '/storage/cnt/'. $this->rand .'.wav';
         $histoty = new HistoryController();
-        $histoty->create($audio,$this->text,'ru-Ru',$this->voice,2,1);
+        $histoty->create($audio,$this->text,$this->lang,$this->voice,2,1);
         return  $histoty;
         }
         return response()->json('erorr',401);

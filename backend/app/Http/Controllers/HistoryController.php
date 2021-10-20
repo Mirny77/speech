@@ -37,7 +37,7 @@ class HistoryController extends Controller
         $history = History::where('user_id',1)->where('id',$id)->first();
         if($history){
             $rep =   str_replace('/storage','', $history->audio);
-           Storage::disk('public')->exists($rep);
+           Storage::disk('public')->delete($rep);
       
         $history->delete();
         }

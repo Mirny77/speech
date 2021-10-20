@@ -17,11 +17,15 @@ display:none;
 .pagination_history .font-medium{
   display:block;
 }
+button{
+  position: relative;
+  z-index: 10000000;
+}
      
           </style>
 
     </head>
-    <body class="antialiased">
+    <body class="antialiased font-sans	">
         <div class="wrapper">
             <div class="relative  bg-white">
                 <div class=" mx-auto px-4 sm:px-6">
@@ -47,6 +51,28 @@ display:none;
                     </nav>
                   </div>
                 </div>
+
+                <div class=" mx-auto  flex items-center justify-between history__item	  px-12 pt-11">
+                  <form action="/"  method="get"  class=" w-full  flex items-center justify-start history__item">
+                <div class="pr-10 text-lg font-medium text-gray-400">Сортировка по дате:</div>
+                      <div class="px-4 py-5 bg-white sm:p-6  flex items-end">
+                        <div class="grid grid-cols-6 gap-6">
+                          <div class="col-span-6 sm:col-span-3">
+                            <label for="first-name" class="block text-sm font-medium text-gray-700">С:</label>
+                            <input type="date" name="start" id="first-name " @if(isset($_GET['start'])) value="{{$_GET['start']}}" @endif autocomplete="given-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                          </div>
+            
+                          <div class="col-span-6 sm:col-span-3">
+                            <label for="last-name" class="block text-sm font-medium text-gray-700">По:</label>
+                            <input type="date" name="end" id="last-name" @if(isset($_GET['end'])) value="{{$_GET['end']}}" @endif autocomplete="family-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                          </div>
+                        </div>
+                        <button class=" ml-5 bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded"> Применить </button>
+
+                      </div>
+                  </form>
+                
+              </div>
                 <div class=" mx-auto  flex items-center justify-between history__item	  px-12 py-11">
                     <form action="/" method="get"> 
                         <div class="flex items-center justify-between">
@@ -73,8 +99,8 @@ display:none;
                             <form action="/" method="get">  
                             <select onchange="this.form.submit()" onchange="this.form.submit()" name="lang" class=" block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline rounded-full shadow-xl">
                               <option  selected value=''>ВСЕ</option>
-                              <option value="ru-RU" @if(isset($_GET['lang']))@if($_GET['lang']=='ru-Ru' ) selected @endif @endif>Русский</option>
-                              <option value="en-En" @if(isset($_GET['lang']))@if($_GET['lang']=='en-En' ) selected @endif @endif>Английский</option>
+                              <option value="ru-RU" @if(isset($_GET['lang']))@if($_GET['lang']=='ru-RU' ) selected @endif @endif>Русский</option>
+                              <option value="en-EN" @if(isset($_GET['lang']))@if($_GET['lang']=='en-EN' ) selected @endif @endif>Английский</option>
                             
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -125,7 +151,7 @@ display:none;
                     <h3 class="text-lg leading-6 font-medium text-gray-500">
                         <span class=" text-lg font-medium text-yellow-500">Аудио:<br></span>
                         <audio controls>
-                            <source src="http://speech.local{{$h->audio}}">
+                            <source src="{{$h->audio}}">
                            </audio>
                    
                     </h3>
@@ -196,7 +222,7 @@ display:none;
                                 </span>
                               </div>
                               <div class="ml-4 flex-shrink-0">
-                                <a href="http://speech.local{{$h->audio}}" class="font-medium text-indigo-600 hover:text-indigo-500" download>
+                                <a href="{{$h->audio}}" class="font-medium text-indigo-600 hover:text-indigo-500" download>
                                   Download
                                 </a>
                               </div>

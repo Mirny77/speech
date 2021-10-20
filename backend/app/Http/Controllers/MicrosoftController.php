@@ -15,11 +15,12 @@ class MicrosoftController extends Controller
   public function index(Request $request){
     $rand = Str::random(5).date('s');
     $text = $request->text;
-    $lang = $request->lang;
+    $lang = 'en-EN';
     $voice = $request->voice;
     $speed = $request->speed;
     $account = UserAccountProvider::where('provider_id',3)->where('user_id',1)->first();
     MicrosoftJob::dispatch( $account,$lang, $text,$rand,$voice, $speed);
    return '/storage/microsoft/'. $rand .'.wav';
   }
+ 
 }

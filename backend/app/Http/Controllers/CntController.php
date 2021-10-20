@@ -15,10 +15,16 @@ class CntController extends Controller
 
         $rand = Str::random(5).date('s');
         $text = $request->text;
-        $lang = $request->lang;
+        if($request->lang == 2){
+            $lang = 'ru-RU';
+        }else if($request->lang == 3){
+            $lang = 'en-EN';
+        }
+     
         $voice = $request->voice;
         $account = UserAccountProvider::where('provider_id',2)->where('user_id',1)->first();
         CntJob::dispatch( $account,$lang, $text,$rand,$voice);
        return '/storage/cnt/'. $rand .'.wav';
     }
+
 }

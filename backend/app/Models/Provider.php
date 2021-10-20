@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Builder;
+use App\Filters\QueryFilter;
 class Provider extends Model
 {
     use HasFactory;
@@ -36,6 +37,9 @@ class Provider extends Model
     public function emotions()
     {
         return $this->hasMany(Emotion::class);
+    }
+    public function scopeFilter(Builder $builder, QueryFilter $filter){
+        return $filter->apply($builder);
     }
     
 }
