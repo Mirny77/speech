@@ -34,10 +34,11 @@ class YandexJob implements ShouldQueue
     protected $account;
     protected $FORMAT_OPUS;
     protected $rand;
+    protected $format;
  
 
 
-    public function __construct($text,$lang,$speed,$voice,$emotion,$account,$FORMAT_OPUS,$rand)
+    public function __construct($text,$lang,$speed,$voice,$emotion,$account,$FORMAT_OPUS,$rand,$format)
     {
         $this->text= $text;
         $this->lang = $lang;
@@ -47,6 +48,7 @@ class YandexJob implements ShouldQueue
         $this->rand= $rand;
         $this->account = $account;
         $this->FORMAT_OPUS = $FORMAT_OPUS;
+        $this->format = $format;
     }
 
     /**
@@ -56,9 +58,11 @@ class YandexJob implements ShouldQueue
      */
     public function handle()
     {
+        
         $url = "https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize";
-        $post = "text=" .  $this->text . "&lang=".$this->lang."&voice=".$this->voice."&emotion=".$this->emotion."&speed=".$this->speed."&sampleRateHertz=48000&format=" .$this->FORMAT_OPUS;
+        $post = $this->format."=" .  $this->text . "&lang=".$this->lang."&voice=".$this->voice."&emotion=".$this->emotion."&speed=".$this->speed."&sampleRateHertz=48000&format=" .$this->FORMAT_OPUS;
         $headers = ['Authorization: Api-Key '. $this->account->token];
+     
         $ch = curl_init();
    
         curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Speech</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,11 @@ display:none;
 button{
   position: relative;
   z-index: 10000000;
+}
+.md\:space-x-10>:not([hidden])~:not([hidden]) {
+    --tw-space-x-reverse: 0;
+    /* margin-right: calc(2.5rem * var(--tw-space-x-reverse));  */
+     margin-left: 0 !important; 
 }
      
           </style>
@@ -38,7 +43,7 @@ button{
                       </a>
                     </div>
               
-                    <nav class="flex flex-initial   justify-center	lg:flex-1">
+                    <nav class="flex w-full   justify-center	">
                       
               
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
@@ -52,52 +57,50 @@ button{
                   </div>
                 </div>
 
-                <div class=" mx-auto  flex items-center justify-between history__item	  px-12 pt-11">
-                  <form action="/"  method="get"  class=" w-full  flex items-center justify-start history__item">
-                <div class="pr-10 text-lg font-medium text-gray-400">Сортировка по дате:</div>
-                      <div class="px-4 py-5 bg-white sm:p-6  flex items-end">
-                        <div class="grid grid-cols-6 gap-6">
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="first-name" class="block text-sm font-medium text-gray-700">С:</label>
-                            <input type="date" name="start" id="first-name " @if(isset($_GET['start'])) value="{{$_GET['start']}}" @endif autocomplete="given-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
-                          </div>
-            
-                          <div class="col-span-6 sm:col-span-3">
-                            <label for="last-name" class="block text-sm font-medium text-gray-700">По:</label>
-                            <input type="date" name="end" id="last-name" @if(isset($_GET['end'])) value="{{$_GET['end']}}" @endif autocomplete="family-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
-                          </div>
+                <div class=" mx-auto  flex items-center justify-start history__item	  px-12 pt-11">
+                  <div class="w-full mr-40">
+                    <form action="/" method="get">  
+                    <div class="bg-white flex items-center rounded-full shadow-xl">
+                      <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" value="@if(isset($_GET['search'])) {{$_GET['search']}} @endif " name="search" type="text"  placeholder="Поиск по тексту">
+                      
+                      <div class="p-4">
+                        <button type="submit" class="bg-yellow-500 text-white rounded-full p-2 hover:bg-yellow-400 focus:outline-none w-12 h-12 flex items-center justify-center">
+                            &#128270;
+                        </button>
                         </div>
-                        <button class=" ml-5 bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded"> Применить </button>
-
                       </div>
-                  </form>
+                    </form>
+                    </div>
+                
+                  
+                
                 
               </div>
-                <div class=" mx-auto  flex items-center justify-between history__item	  px-12 py-11">
-                    <form action="/" method="get"> 
-                        <div class="flex items-center justify-between">
-                            <span class="pr-10 text-lg font-medium text-gray-400">Фильтры:</span>
+                <div class=" mx-auto  flex flex-col items-center justify-between history__item	  px-12 py-11">
+                    <form action="/" method="get" class="flex w-full items-center justify-between"> 
+                        <div class="flex items-center flex-wrap">
+                      
                             <div class="pr-5">
                                <span class="mb-6 text-base font-medium font-semibold"> Провайдер:</span>
                             <div class="inline-block relative w-64">
-                                <form action="" method="get">
-                                <select onchange="this.form.submit()" name="provider_id" class="block appearance-none w-full rounded-full shadow-xl bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                             
+                                <select  name="provider_id" class="block appearance-none w-full rounded-full shadow-xl bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                   <option   selected value=''>ВСЕ</option>
-                                  <option value="1"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==1 ) selected @endif @endif>Yandex</option>
-                                  <option value="2"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==2 ) selected @endif @endif>CNT</option>
+                                  <option value="1"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==1 ) selected @endif @endif>Яндекс</option>
+                                  <option value="2"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==2 ) selected @endif @endif>ЦНТ</option>
                                   <option value="3" @if(isset($_GET['provider_id']))@if($_GET['provider_id']==3 ) selected @endif @endif>Microsoft</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                   <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                                 </div>
-                            </form>
+                          
                               </div>
                         </div>
                         <div class="">
                             <span class="mb-2 text-base font-medium font-semibold"> Язык:</span>
                         <div class="inline-block relative w-64">
-                            <form action="/" method="get">  
-                            <select onchange="this.form.submit()" onchange="this.form.submit()" name="lang" class=" block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline rounded-full shadow-xl">
+                         
+                            <select  name="lang" class=" block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline rounded-full shadow-xl">
                               <option  selected value=''>ВСЕ</option>
                               <option value="ru-RU" @if(isset($_GET['lang']))@if($_GET['lang']=='ru-RU' ) selected @endif @endif>Русский</option>
                               <option value="en-EN" @if(isset($_GET['lang']))@if($_GET['lang']=='en-EN' ) selected @endif @endif>Английский</option>
@@ -106,25 +109,34 @@ button{
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
-                        </form>
+                      
                           </div>
+                          
                     </div>
-                        </div>
-                        <div class="w-full ml-40">
-                            <form action="/" method="get">  
-                            <div class="bg-white flex items-center rounded-full shadow-xl">
-                              <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" value="@if(isset($_GET['search'])) {{$_GET['search']}} @endif " name="search" type="text"  placeholder="Поиск по тексту">
-                              
-                              <div class="p-4">
-                                <button type="submit" class="bg-yellow-500 text-white rounded-full p-2 hover:bg-yellow-400 focus:outline-none w-12 h-12 flex items-center justify-center">
-                                    &#128270;
-                                </button>
+          
+                    
+                            <div class="px-4 py-5 bg-white sm:p-6  flex justify-between items-center">
+                              <div class="flex  gap-6">
+
+                                <div class="flex items-center justify-between w-50">
+                                         <span class="mr-1 text-base font-medium font-semibold"> C:</span>
+                                  <input type="date" name="start" id="first-name " @if(isset($_GET['start'])) value="{{$_GET['start']}}" @endif autocomplete="given-name" class=" block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline rounded-full shadow-xl">
+                                </div>
+                  
+                                <div class="flex items-center justify-between w-50">
+                                  <span class="mr-1 text-base font-medium font-semibold"> По:</span>
+                                  <input type="date" name="end" id="last-name" @if(isset($_GET['end'])) value="{{$_GET['end']}}" @endif autocomplete="family-name" class=" block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline rounded-full shadow-xl">
                                 </div>
                               </div>
-                            </form>
+                   
+      
                             </div>
-                        
-                          </div>
+                            <button class=" ml-5 bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded"> Применить </button>
+                            <a href="/" class=" ml-5 bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-2 px-4 border border-yellow-700 rounded"> Сбросить </a>
+
+                          </form>
+                        </div>
+                 
                   
                 </div>
               

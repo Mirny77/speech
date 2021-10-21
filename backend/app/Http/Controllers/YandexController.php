@@ -13,16 +13,22 @@ class YandexController extends Controller
 {
     public function index(Request $request){
 
+        if($request->ssml){
+            $format = "ssml";
+        }else{
+            $format = "text"; 
+        }
         $text = $request->text;
         $lang = 'ru-RU';
+
         $speed = $request->speed;
         $voice = $request->voice;
         $emotion = $request->emotion;
-       
+        
         $rand = Str::random(5).date('s');
         $account = UserAccountProvider::where('id',1)->where('user_id',1)->first();
         $FORMAT_OPUS = "oggopus";
-         YandexJob::dispatch($text, $lang,$speed, $voice,$emotion, $account, $FORMAT_OPUS, $rand);
+         YandexJob::dispatch($text, $lang,$speed, $voice,$emotion, $account, $FORMAT_OPUS, $rand,$format);
         return '/storage/yandex/'. $rand .'.ogg';
     }
 

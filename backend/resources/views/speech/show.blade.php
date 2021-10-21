@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Speech</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,6 +46,12 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  .md\:space-x-10>:not([hidden])~:not([hidden]) {
+    --tw-space-x-reverse: 0;
+    /* margin-right: calc(2.5rem * var(--tw-space-x-reverse));  */
+     margin-left: 0 !important; 
+}
+     
   </style>
 
 </div> 
@@ -153,6 +159,27 @@
                         <input class="rounded-lg overflow-hidden appearance-none bg-gray-400" v-model="speed" type="range" min="0.1" max="3.0" step="0.1" value="1.0" />
                     </div>
                     @endif
+                    @if($provider->convert)
+                    <div class="col-span-6 sm:col-span-3 pt-5">
+                    <div class="flex items-center">
+                      <input id="remember_me" name="remember_me" type="checkbox" v-model="ssml" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                      <label for="remember_me"  class="ml-2 block text-sm text-gray-900">
+                       SSML
+                      </label>
+                    </div>
+                  </div>
+                  @else
+                  @if ($provider->id == 3)
+                  <div class="col-span-6 sm:col-span-3 pt-5">
+                    Можно искользовать SSML(без тегов "<code>speak, voice, prosody</code>"  - они прописаны по умолчанмию) и обычный текст. 
+                  </div> 
+                  @else
+                  <div class="col-span-6 sm:col-span-3 pt-5">
+                    Можно искользовать SSML и обычный текст. 
+                  </div>  
+                  @endif
+                
+                  @endif
                         <div class="col-span-6 sm:col-span-3 pt-5">
                             <label for="about" class="block text-sm font-medium text-gray-700">
                               Текст
@@ -258,7 +285,8 @@
       interval:'',
       it:null,
       loader:false,
-      limit : {{$provider->limit}}
+      limit : {{$provider->limit}},
+      ssml:false
  
     },
     methods: {
@@ -296,6 +324,7 @@
                 text: this.text,
                 speed: this.speed,
                 emotion: this.emotion,
+                ssml:this.ssml,
                 lang:@if(isset($_GET['lang_id'])){{$_GET['lang_id']}}@endif
             }
             clearInterval(this.interval )
