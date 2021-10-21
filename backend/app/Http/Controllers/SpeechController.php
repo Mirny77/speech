@@ -14,7 +14,8 @@ class SpeechController extends Controller
 {
    public function index(Request $request){
 
-    $text = $request->text;
+    $text = 'test';
+
     $account = UserAccountProvider::where('id',1)->first();
      $FORMAT_PCM = "lpcm";
    $FORMAT_OPUS = "oggopus";
@@ -24,7 +25,7 @@ class SpeechController extends Controller
     $post = "text=" .  $text . "&lang=ru-RU&voice=filipp&speed=0.9&sampleRateHertz=48000&format=" .$FORMAT_OPUS;
     $headers = ['Authorization: Api-Key AQVNxmxyCdl12aM69fK5FmN0Ddkz7TwBaUEWsYjW'];
     $ch = curl_init();
-    
+    return $ch;
     curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -37,7 +38,7 @@ class SpeechController extends Controller
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     
     
-    $response = curl_exec($ch);
+    return $response = curl_exec($ch);
     if (curl_errno($ch)) {
         print "Error: " . curl_error($ch);
     }
