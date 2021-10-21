@@ -78,7 +78,7 @@
                         История
                       </a>
                       <a href="/speech" class="text-lg font-medium text-gray-500 hover:text-gray-900">
-                        Синтезировать текст
+                        Синтезировать речь
                       </a>
       
                     </nav>
@@ -92,9 +92,9 @@
                 <div class=" md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <button class="text-white-300 bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".ru-RU")'>Синтез текста на русском языке</button>
+                      <button class="text-white-300 bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".ru-RU")'>Синтез речи на русском языке</button>
         
-                      <button class="text-white-300  bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".en-EN")'>Синтез текста на английском языке</button>
+                      <button class="text-white-300  bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".en-EN")'>Синтез речи на английском языке</button>
         
                     </div>
                 </div>
