@@ -234,8 +234,8 @@ button{
                                 </span>
                               </div>
                               <div class="ml-4 flex-shrink-0">
-                                <a href="{{$h->audio}}" class="font-medium text-indigo-600 hover:text-indigo-500" download>
-                                  Download
+                                <a href="{{$h->audio}}" class="font-medium text-gray-900 hover:text-gray-900" download>
+                                  Скачать
                                 </a>
                               </div>
                             </li>
