@@ -50,7 +50,7 @@ button{
                         История
                       </a>
                       <a href="/speech" class="text-lg font-medium text-gray-500 hover:text-gray-900">
-                        Синтезировать текст
+                        Синтезировать речь
                       </a>
       
                     </nav>

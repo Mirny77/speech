@@ -71,7 +71,7 @@
                       </a>
                     </div>
               
-                    <nav class="flex flex-initial   justify-center	lg:flex-1">
+                    <nav class="flex w-full  justify-center">
                       
               
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
@@ -85,7 +85,7 @@
                   </div>
                 </div>
                 <div class="flex  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
-                  Выберете язык, на которм будете синтезировать текст:
+                  Выберете язык, на которм будете синтезировать речь:
                  </div>
 <div class="flex  justify-center items-center px-4 sm:px-6 py-11">
             
