@@ -100,6 +100,9 @@ class CntJob implements ShouldQueue
             'X-Session-Id: '.$session_id->{'session_id'}
         ),
         ));
+
+
+        
     
         $response = curl_exec($curl);
     
@@ -111,8 +114,25 @@ class CntJob implements ShouldQueue
         $audio = '/storage/cnt/'. $this->rand .'.wav';
         $histoty = new HistoryController();
         $histoty->create($audio,$this->text,$this->lang,$this->voice,2,1);
-        return  $histoty;
-        }
+        $curl = curl_init();
+
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://cloud.speechpro.com/vksession/rest/session',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'DELETE',
+            CURLOPT_HTTPHEADER => array(
+              'X-Session-Id:'.$session_id->{'session_id'}
+            ),
+          ));
+
+          curl_close($curl);
+        
+                  }
         return response()->json('erorr',401);
     }
 }

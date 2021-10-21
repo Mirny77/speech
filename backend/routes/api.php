@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/test/microsoft',[\App\Http\Controllers\SpeechController::class,'microsoft']);
-Route::post('/test',[\App\Http\Controllers\SpeechController::class,'index']);
+// Route::post('/test/microsoft',[\App\Http\Controllers\SpeechController::class,'microsoft']);
+// Route::post('/test',[\App\Http\Controllers\SpeechController::class,'index']);
 Route::post('/yandex',[\App\Http\Controllers\YandexController::class,'index']);
 Route::post('/check',[\App\Http\Controllers\SpeechController::class,'check']);
 Route::post('/cnt/check',[\App\Http\Controllers\CntController::class,'check']);

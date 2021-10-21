@@ -201,6 +201,8 @@
                               <source :src="audio">
                              </audio> </span>
                              <button  v-if ="audio" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded" @click="Delete">Удалить</button>
+                             <a :href="audio" download v-if ="audio" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 border border-yellow-700 rounded" >Скачать</a>
+
                             <button v-if="!loader" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" @click="Yandex">
                                 Синтезировать
                             </button>
