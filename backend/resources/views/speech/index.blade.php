@@ -87,7 +87,7 @@ button{
                                 <select  name="provider_id" class="block appearance-none w-full rounded-full shadow-xl bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                   <option   selected value=''>ВСЕ</option>
                                   <option value="1"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==1 ) selected @endif @endif>Яндекс</option>
-                                  <option value="2"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==2 ) selected @endif @endif>ЦНТ</option>
+                                  <option value="2"  @if(isset($_GET['provider_id']))@if($_GET['provider_id']==2 ) selected @endif @endif>ЦРТ</option>
                                   <option value="3" @if(isset($_GET['provider_id']))@if($_GET['provider_id']==3 ) selected @endif @endif>Microsoft</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -181,7 +181,7 @@ button{
                         @if( $h->provider->name == 'yandex')
                         <span class=" text-lg font-medium text-gray-900"><span class="text-red-700">Я</span>ндекс</span>   
                         @elseif($h->provider->name == 'Cnt')
-                        <span class=" text-lg font-medium text-green-700">ЦНТ</span>
+                        <span class=" text-lg font-medium text-green-700">ЦРТ</span>
                         @else
                         <span class=" text-lg font-medium text-blue-700">Microsoft</span> 
                         @endif
