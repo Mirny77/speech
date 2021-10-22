@@ -152,7 +152,7 @@ button{
                 -->
               
               </div>
-              @if($found)
+              @if(!count($history))
               <div class="flex  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
                 Ничего не найдено
                </div>
