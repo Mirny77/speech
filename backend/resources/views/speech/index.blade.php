@@ -269,55 +269,58 @@ button{
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
         <script>
-            function history(h){
-                $( ".history__item__sub_"+h ).toggle( "hidden")
-            }
-            var paramsString = document.location.search;
-	    var searchParams = new URLSearchParams(paramsString);
-      
-        var s= searchParams.get("search")
-        var len = s.replace(/\s/g, '').length;
-         
-   test =  Array.from(s.replace(/\s/g, ''));
-        if(s){
-          $(".history__item__sub").removeClass( "hidden")
-          r = document.querySelectorAll('.history__item__sub_text')
-         r.forEach(e=>{
-          var span =e
-          text =  e
-  st = s.toLowerCase().replace(/\s/g, '')
-    text = span.innerHTML.split(' ').map(function(el,i) {
-span.innerHTML = text;
-if(el.toLowerCase().includes(st)){
-       
-  return '<span class="bg-yellow-300">' + el + '</span> ';
-           }
-       
-       
+function history(h){
+  $( ".history__item__sub_"+h ).toggle( "hidden")
+  }
+  var paramsString = document.location.search;
+  var searchParams = new URLSearchParams(paramsString);
+
+  var s= searchParams.get("search")
+
+  
+
+  if(s){
+    tesst = s.split(' ').filter(n=>n)
+    function rtt(ttt){
+      rtg = false
+        tesst.find(e=>{
+
+        if(ttt.toLowerCase().includes(e.toLowerCase())){
+
+           return rtg = true
+        }else{
+
+            rtg = false
+        }
+
+    })
+
+    return  rtg
+  }
+  $(".history__item__sub").removeClass( "hidden")
+  r = document.querySelectorAll('.history__item__sub_text')
+  r.forEach(e=>{
+        var span =e
+            text =  e
+          st = s.toLowerCase().replace(/\s/g, '')
+          text = span.innerHTML.split(' ').map(function(el,i) {
+          span.innerHTML = text;
+
+
+        if(el.toLowerCase().includes(st) || rtt(el) ){
+
+        return '<span class="bg-yellow-300">' + el + '</span> ';
+        }
+
+
         return '<span class="char">' + el + '</span> ';
-    }).join('');
-  
-   console.log(test)
-span.innerHTML = text;
-         t =  document.querySelectorAll('.history__item__sub_text')
-         t =  document.querySelectorAll('.history__item__sub_text')
-         t.forEach(e=>{
-          var aTag = document.createElement("a");
+        }).join('');
 
-          console.log(e.innerText.match(/he/gi))
-         })
-      regexp = new RegExp(s, 'i');
+        span.innerHTML = text;
 
-  if (regexp.exec(document.querySelector('.history__item__sub').innerHTML)) {
-    // Если нашло, то выполнить это
-    var reg = new RegExp(s, 'g');
-    console.log(document.querySelectorAll('.history__item__sub_text'))
-  } else {
-    // Если не нашло, то выполнить это
-    console.log('Текст не найдет');
-  };   
-         })
-  
+
+  })
+    
 }
      
 
