@@ -61,7 +61,7 @@ button{
                   <div class="w-full mr-40">
                     <form action="/" method="get">  
                     <div class="bg-white flex items-center rounded-full shadow-xl">
-                      <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" value="@if(isset($_GET['search'])) {{$_GET['search']}} @endif " name="search" type="text"  placeholder="Поиск по тексту">
+                      <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" value="@if(isset($_GET['search'])) {{$_GET['search']}} @endif" name="search" type="text"  placeholder="Поиск по тексту">
                       
                       <div class="p-4">
                         <button type="submit" class="bg-yellow-500 text-white rounded-full p-2 hover:bg-yellow-400 focus:outline-none w-12 h-12 flex items-center justify-center">

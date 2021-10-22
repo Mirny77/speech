@@ -222,16 +222,25 @@
                       <label for="remember_me"  class="ml-2 block text-sm text-gray-900">
                        SSML
                       </label>
+
                     </div>
+                    <div class="pt-2">Использование Speech Synthesis Markup Language (SSML) дает вам возможность контролировать, синтез речи из текста. <a href="https://cloud.yandex.ru/docs/speechkit/tts/ssml" class="text-red-500">Документация</a></div>
+
                   </div>
                   @else
                   @if ($provider->id == 3)
                   <div class="col-span-6 sm:col-span-3 pt-5">
+                   
                     Можно искользовать SSML(без тегов "<code>speak, voice, prosody</code>"  - они прописаны по умолчанмию) и обычный текст. 
+                    <div class="pt-2">Использование Speech Synthesis Markup Language (SSML) дает вам возможность контролировать, синтез речи из текста. <a href="https://cloud.yandex.ru/docs/speechkit/tts/ssml" class="text-blue-500">Документация</a></div>
+
+
+
                   </div> 
                   @else
                   <div class="col-span-6 sm:col-span-3 pt-5">
                     Можно искользовать SSML и обычный текст. 
+                    <div class="pt-2">Использование Speech Synthesis Markup Language (SSML) дает вам возможность контролировать, синтез речи из текста. <a href="https://cloud.yandex.ru/docs/speechkit/tts/ssml" class="text-green-500">Документация</a></div>
                   </div>  
                   @endif
                 
