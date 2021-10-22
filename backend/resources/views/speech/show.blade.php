@@ -105,33 +105,34 @@
                   <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                     <div class="flex justify-start ">
                       <a href="/">
-                        <span class="sr-only">Speech</span>
-                        <h1 class="  text-yellow-400 font-bold hover:text-yellow-600 text-4xl"> Speech</h1>
+                        <span class="sr-only">Text2Speech</span>
+                        <h1 class="  text-yellow-400 font-bold hover:text-yellow-600 text-4xl"> Text2Speech</h1>
                         {{-- <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt=""> --}}
                       </a>
                     </div>
               
-                    <nav class="flex w-full   justify-center">
+                    <nav class="flex w-full pl-10   justify-start">
                       
               
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
                         История
                       </a>
                       <a href="/speech" class="text-lg font-medium text-gray-500 hover:text-gray-900">
-                        Синтезировать речь
+                        Синтез
                       </a>
       
                     </nav>
                   </div>
                 </div>
-                <div class="flex  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
-                  Выберете язык, на которм будете синтезировать речь:
+                <div class="flex flex-col	  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
+                 Синтез речи 
+                 <div class="flex  justify-center items-center  text-xl	font-semibold font-mono " >Выберете язык</div>
                  </div>
                 
-            <div class="flex  justify-center items-center px-4 sm:px-6 py-11">
+            <div class="flex  justify-center items-center px-4 sm:px-6 ">
             
                 <div class=" md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
+                    <div class=" flex items-baseline space-x-4">
                       <select id="country" onchange='speech(this.value)' name="country"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
                         <option value="" @if(!isset($_GET['lang_id'])) selected @endif disabled >Выберете язык</option>
                         <option value=".ru-RU" @if(isset($_GET['lang_id']))@if($_GET['lang_id']==1 || $_GET['lang_id']==2) selected @endif @endif >Синтез речи на русском языке</option>
@@ -149,11 +150,11 @@
                 <div class="flex w-full sub__speech justify-center items-center px-4 sm:px-6 py-6 ">
                 <div class="hidden ru-RU w-full">
                     <div class=" flex items-baseline space-x-4">
-                      <div class="tabs w-full mx-auto flex justify-center items-center px-40  pb-5 ">
+                      <div class="tabs w-1/2 mx-auto flex justify-center items-center pt-5 pb-5">
                         <div class="tabs__item tabs__item__1 speech_href__red w-6/12 flex  justify-center items-center">
                          <a href="/speech?provider=1&lang_id=1" class=" w-full text-xl py-3 flex justify-center items-center font-semibold">Яндекс</a>
                         </div>
-                        <div class="tabs__item tabs__item__2 w-6/12 flex speech_href__green__1 justify-center items-center   	">
+                        <div class="tabs__item tabs__item__2 w-6/12 flex speech_href__green__1 justify-center items-center">
                          <a href="/speech?provider=2&lang_id=2" class="  w-full text-xl py-3 flex justify-center items-center font-semibold">ЦНТ</a>
                         </div>
                       </div>
@@ -163,7 +164,7 @@
                 </div>
                 <div class="hidden en-EN w-full">
                   <div class=" flex items-baseline space-x-4 ">
-                    <div class="tabs w-full mx-auto flex justify-center items-center pb-5  px-40 ">
+                    <div class="tabs w-1/2 mx-auto flex justify-center items-center pt-5 pb-5 ">
                       <div class="tabs__item tabs__item__3 speech_href__green__2 w-6/12 flex  justify-center items-center">
                        <a href="/speech?provider=2&lang_id=3" class=" w-full py-3 text-xl flex justify-center items-center font-semibold">ЦНТ</a>
                       </div>

@@ -37,20 +37,20 @@ button{
                   <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                     <div class="flex justify-start ">
                       <a href="/">
-                        <span class="sr-only">Speech</span>
-                        <h1 class="  text-yellow-400 font-bold hover:text-yellow-600 text-4xl"> Speech</h1>
+                        <span class="sr-only">Text2Speech</span>
+                        <h1 class="  text-yellow-400 font-bold hover:text-yellow-600 text-4xl"> Text2Speech</h1>
                         {{-- <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt=""> --}}
                       </a>
                     </div>
               
-                    <nav class="flex w-full   justify-center	">
+                    <nav class="flex w-full pl-10 justify-start">
                       
               
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
                         История
                       </a>
                       <a href="/speech" class="text-lg font-medium text-gray-500 hover:text-gray-900">
-                        Синтезировать речь
+                        Синтез
                       </a>
       
                     </nav>
