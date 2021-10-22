@@ -151,10 +151,10 @@
                     <div class=" flex items-baseline space-x-4">
                       <div class="tabs w-full mx-auto flex justify-center items-center px-40  pb-5 ">
                         <div class="tabs__item tabs__item__1 speech_href__red w-6/12 flex  justify-center items-center">
-                         <a href="/speech?provider=1&lang_id=1" class=" w-full text-xl flex justify-center items-center font-semibold">Яндекс</a>
+                         <a href="/speech?provider=1&lang_id=1" class=" w-full text-xl py-3 flex justify-center items-center font-semibold">Яндекс</a>
                         </div>
                         <div class="tabs__item tabs__item__2 w-6/12 flex speech_href__green__1 justify-center items-center   	">
-                         <a href="/speech?provider=2&lang_id=2" class="  w-full text-xl flex justify-center items-center font-semibold">ЦНТ</a>
+                         <a href="/speech?provider=2&lang_id=2" class="  w-full text-xl py-3 flex justify-center items-center font-semibold">ЦНТ</a>
                         </div>
                       </div>
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -165,10 +165,10 @@
                   <div class=" flex items-baseline space-x-4 ">
                     <div class="tabs w-full mx-auto flex justify-center items-center pb-5  px-40 ">
                       <div class="tabs__item tabs__item__3 speech_href__green__2 w-6/12 flex  justify-center items-center">
-                       <a href="/speech?provider=2&lang_id=3" class=" w-full text-xl flex justify-center items-center font-semibold">ЦНТ</a>
+                       <a href="/speech?provider=2&lang_id=3" class=" w-full py-3 text-xl flex justify-center items-center font-semibold">ЦНТ</a>
                       </div>
                       <div class="tabs__item tabs__item__4 w-6/12 flex speech_href__blue justify-center items-center   	">
-                       <a href="/speech?provider=3&lang_id=4" class=" w-full text-xl flex justify-center items-center font-semibold">Microsoft</a>
+                       <a href="/speech?provider=3&lang_id=4" class=" w-full py-3 text-xl flex justify-center items-center font-semibold">Microsoft</a>
                       </div>
                     </div>
             
