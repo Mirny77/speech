@@ -30,7 +30,7 @@ class HistoryFilter extends QueryFilter{
 
     public function search($search_string = ''){
         return $this->builder
-            ->where('text', 'LIKE', '%'.$search_string.'%');
+            ->where('text', 'ilike', '%'.$search_string.'%');
     }
     public function provider($id = null){
     

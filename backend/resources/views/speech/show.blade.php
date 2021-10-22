@@ -28,7 +28,47 @@
             .color__white{
               color:#FFF !important;
             }
-          
+          .tabs__item{
+            border-bottom:2px solid rgba(156, 163, 175) ;
+            cursor: pointer;
+          }
+          .tabs__item__1{
+            color:rgba(239,68,68);
+            border-bottom:2px solid  rgba(239,68,68);
+          }
+          .tabs__item__2{
+            color: rgba(16,185,129);
+            border-bottom:2px solid  rgba(16,185,129);
+          }
+          .tabs__item__3{
+            color: rgba(16,185,129);
+            border-bottom:2px solid  rgba(16,185,129);
+          }
+          .tabs__item__4{
+            color: rgba(59,130,246);
+            border-bottom:2px solid  rgba(59,130,246);
+          }
+          .tabs__item__1:hover{
+            border-bottom:2px solid  rgba(239,68,68);
+            color:white;
+            background: rgba(239,68,68);
+
+          }
+          .tabs__item__2:hover{
+            border-bottom:2px solid  rgba(16,185,129);
+            color:white;
+            background: rgba(16,185,129);
+          }
+          .tabs__item__3:hover{
+            border-bottom:2px solid  rgba(16,185,129);
+            color:white;
+            background: rgba(16,185,129);
+          }
+          .tabs__item__4:hover{
+            border-bottom:2px solid  rgba(59,130,246);
+            color:white;
+            background: rgba(59,130,246);
+          }
         </style>
 <style>
   .loader {
@@ -71,7 +111,7 @@
                       </a>
                     </div>
               
-                    <nav class="flex w-full  justify-center">
+                    <nav class="flex w-full   justify-center">
                       
               
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
@@ -87,36 +127,51 @@
                 <div class="flex  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
                   Выберете язык, на которм будете синтезировать речь:
                  </div>
-<div class="flex  justify-center items-center px-4 sm:px-6 py-11">
+                
+            <div class="flex  justify-center items-center px-4 sm:px-6 py-11">
             
                 <div class=" md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
+                      <select id="country" onchange='speech(this.value)' name="country"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                        <option value="" @if(!isset($_GET['lang_id'])) selected @endif disabled >Выберете язык</option>
+                        <option value=".ru-RU" @if(isset($_GET['lang_id']))@if($_GET['lang_id']==1 || $_GET['lang_id']==2) selected @endif @endif >Синтез речи на русском языке</option>
+                    
+                        <option value=".en-EN" @if(isset($_GET['lang_id']))@if($_GET['lang_id']==3 || $_GET['lang_id']==4) selected @endif @endif >Синтез речи на английском языке</option>
+                       
+                     
+                      </select>
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <button class="text-white-300 bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".ru-RU")'>Синтез речи на русском языке</button>
-        
-                      <button class="text-white-300  bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium" onclick='speech(".en-EN")'>Синтез речи на английском языке</button>
-        
+                     
                     </div>
                 </div>
                
                 </div>
-                <div class="flex sub__speech justify-center items-center px-4 sm:px-6 py-6 ">
-                <div class="hidden ru-RU">
-                    <div class="ml-10 flex items-baseline space-x-4">
+                <div class="flex w-full sub__speech justify-center items-center px-4 sm:px-6 py-6 ">
+                <div class="hidden ru-RU w-full">
+                    <div class=" flex items-baseline space-x-4">
+                      <div class="tabs w-full mx-auto flex justify-center items-center px-40  pb-5 ">
+                        <div class="tabs__item tabs__item__1 speech_href__red w-6/12 flex  justify-center items-center">
+                         <a href="/speech?provider=1&lang_id=1" class=" w-full text-xl flex justify-center items-center font-semibold">Яндекс</a>
+                        </div>
+                        <div class="tabs__item tabs__item__2 w-6/12 flex speech_href__green__1 justify-center items-center   	">
+                         <a href="/speech?provider=2&lang_id=2" class="  w-full text-xl flex justify-center items-center font-semibold">ЦНТ</a>
+                        </div>
+                      </div>
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <a href="/speech?provider=1&lang_id=1" class=" speech_href speech_href__red text-red-500 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold" >Яндекс</a>
-        
-                      <a href="/speech?provider=2&lang_id=2" class=" speech_href speech_href__green__1 text-green-500 hover:bg-green-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold" >ЦНТ</a>
-        
+                    
                     </div>
                 </div>
-                <div class="hidden en-EN">
-                  <div class="ml-10 flex items-baseline space-x-4 ">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="/speech?provider=2&lang_id=3" class="speech_href speech_href__green__2 text-green-500 hover:bg-green-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold" >ЦНТ</a>
-      
-                    <a href="/speech?provider=3&lang_id=4" class=" speech_href speech_href__blue text-blue-500 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-xl font-semibold" >Microsoft</a>
-      
+                <div class="hidden en-EN w-full">
+                  <div class=" flex items-baseline space-x-4 ">
+                    <div class="tabs w-full mx-auto flex justify-center items-center pb-5  px-40 ">
+                      <div class="tabs__item tabs__item__3 speech_href__green__2 w-6/12 flex  justify-center items-center">
+                       <a href="/speech?provider=2&lang_id=3" class=" w-full text-xl flex justify-center items-center font-semibold">ЦНТ</a>
+                      </div>
+                      <div class="tabs__item tabs__item__4 w-6/12 flex speech_href__blue justify-center items-center   	">
+                       <a href="/speech?provider=3&lang_id=4" class=" w-full text-xl flex justify-center items-center font-semibold">Microsoft</a>
+                      </div>
+                    </div>
+            
                   </div>
               </div>
                 
@@ -130,7 +185,7 @@
                             
                             <div class="col-span-6 sm:col-span-3">
                               <label for="country" class="block text-sm font-medium text-gray-700">Голос</label>
-                              <select id="country" name="country" v-model="voice"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                              <select id="country" name="country" v-model="voice"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" :class="validate_voice">
                                 <option disabled value="">Выберите голос</option>
                                 @foreach ($provider->voices as $v)
 
@@ -143,7 +198,7 @@
                             @if(count($provider->emotions))
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="country" class="block text-sm font-medium text-gray-700">Эмоция</label>
-                                <select id="country" name="country" v-model="emotion" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                                <select id="country" name="country" v-model="emotion" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" >
                                   <option disabled value="">Выберите эмоцию</option>
                                   @foreach ($provider->emotions as $e)
                                   <option value='{{$e->value}}'>{{$e->value}}</option>
@@ -185,7 +240,7 @@
                               Текст
                             </label>
                             <div class="mt-1">
-                              <textarea id="about" name="about" rows="10" v-model="text"  class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-900 focus:border-gray-500 sm:text-sm" placeholder="Введите текст"></textarea>
+                              <textarea id="about" name="about" rows="10" v-model="text"  class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-900 focus:border-gray-500 sm:text-sm" :class="validate_text" placeholder="Введите текст"></textarea>
                             </div>
                             <p class="mt-2 text-sm text-gray-500">
                               Limit: @{{text.length}}/{{$provider->limit}} символов
@@ -254,22 +309,24 @@
           $(".ru-RU").addClass( "hidden") 
          }
          if (p==1){
-          $(".speech_href__red").addClass( "bg-red-700")
+          $(".speech_href__red").addClass( "bg-red-500")
           $(".speech_href__red").addClass( "color__white")
          }else if(p==4){
-          $(".speech_href__blue").addClass( "bg-blue-700")
+          $(".speech_href__blue").addClass( "bg-blue-500")
           $(".speech_href__blue").addClass( "color__white")
          }else if(p==2){
-          $(".speech_href__green__1").addClass( "bg-green-700")
+          $(".speech_href__green__1").addClass( "bg-green-500")
           $(".speech_href__green__1").addClass( "color__white")
          }else if(p==3){
-          $(".speech_href__green__2").addClass( "bg-green-700")
+          $(".speech_href__green__2").addClass( "bg-green-500")
           $(".speech_href__green__2").addClass( "color__white")
          }
   
     </script>
      
         
+
+   
 
             <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
@@ -282,13 +339,15 @@
       text:'',
       voice:'',
       speed: '1.0',
-      emotion: '',
+      emotion: 'neutral',
       audio:'',
       interval:'',
       it:null,
       loader:false,
       limit : {{$provider->limit}},
-      ssml:false
+      ssml:false,
+      validate_text:'',
+      validate_voice:'',
  
     },
     methods: {
@@ -320,7 +379,8 @@
       },
         async Yandex(){
           if(this.text&&this.voice&&(this.text.length<=this.limit)){
-  
+            this.validate_text=""
+            this.validate_voice=""
             let speech = {
                 voice: this.voice,
                 text: this.text,
@@ -342,13 +402,20 @@
                         
                       }
                 })))
+          }else{
+            if(this.text.length==0){
+              this.validate_text="border-red-300"
+            }if(!this.voice){
+              this.validate_voice="border-red-300"
+            }
+           
           }
         },
         Delete(){
           if(this.audio){
             axios.post('/api/delete',{'audio':this.audio})
             this.audio=''
-           console.log('asd')
+           
           }
         }
    

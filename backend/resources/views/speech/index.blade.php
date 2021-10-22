@@ -26,7 +26,7 @@ button{
     /* margin-right: calc(2.5rem * var(--tw-space-x-reverse));  */
      margin-left: 0 !important; 
 }
-     
+   
           </style>
 
     </head>
@@ -156,12 +156,12 @@ button{
                    @foreach ($history as $h)
                    <div class="flex items-center justify-center  px-12 cursor-pointer " onclick="history({{$h->id}})">
                 
-                    <div class="md:w-100  py-4 px-5 w-full ">
-                   <div class="px-4 py-5 flex items-between justify-between sm:px-6 border-solid border-4 border-light-blue-500 rounded-3xl shadow-xl ">
+                    <div class="md:w-100  py-2 px-5 w-full ">
+                   <div class="px-4 py-5 flex items-between justify-between sm:px-6 border-solid border-2 border-light-blue-500 rounded-3xl shadow-xl ">
                       
                 
                     <h3 class="text-lg leading-6 font-medium text-gray-500">
-                        <span class=" text-lg font-medium text-yellow-500">Аудио:<br></span>
+                       
                         <audio controls>
                             <source src="{{$h->audio}}">
                            </audio>
@@ -189,7 +189,7 @@ button{
                     </form>
                   </div>
               
-                  <div class="hidden history__item__sub_{{$h->id}} px-4 py-5 sm:px-6 border-solid border-4 border-light-blue-500 rounded-3xl  ">
+                  <div class="hidden history__item__sub  history__item__sub_{{$h->id}} px-4 py-5 sm:px-6 border-solid border-4 border-light-blue-500 rounded-3xl  ">
                     <dl>
                       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
@@ -212,13 +212,13 @@ button{
                         <dt class="text-sm font-medium text-gray-500">
                           Текст
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <dd class="history__item__sub_text mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{$h->text}}                       
                          </dd>
                       </div>
                       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                         Файл
+                         Аудиофайл
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
@@ -267,6 +267,54 @@ button{
             function history(h){
                 $( ".history__item__sub_"+h ).toggle( "hidden")
             }
+            var paramsString = document.location.search;
+	    var searchParams = new URLSearchParams(paramsString);
+      
+        var s= searchParams.get("search")
+        var len = s.replace(/\s/g, '').length;
+         
+   test =  Array.from(s.replace(/\s/g, ''));
+        if(s){
+          $(".history__item__sub").removeClass( "hidden")
+          r = document.querySelectorAll('.history__item__sub_text')
+         r.forEach(e=>{
+          var span =e
+          text =  e
+  st = s.toLowerCase().replace(/\s/g, '')
+    text = span.innerHTML.split(' ').map(function(el,i) {
+span.innerHTML = text;
+if(el.toLowerCase().includes(st)){
+       
+  return '<span class="bg-yellow-300">' + el + '</span> ';
+           }
+       
+       
+        return '<span class="char">' + el + '</span> ';
+    }).join('');
+  
+   console.log(test)
+span.innerHTML = text;
+         t =  document.querySelectorAll('.history__item__sub_text')
+         t =  document.querySelectorAll('.history__item__sub_text')
+         t.forEach(e=>{
+          var aTag = document.createElement("a");
+
+          console.log(e.innerText.match(/he/gi))
+         })
+      regexp = new RegExp(s, 'i');
+
+  if (regexp.exec(document.querySelector('.history__item__sub').innerHTML)) {
+    // Если нашло, то выполнить это
+    var reg = new RegExp(s, 'g');
+    console.log(document.querySelectorAll('.history__item__sub_text'))
+  } else {
+    // Если не нашло, то выполнить это
+    console.log('Текст не найдет');
+  };   
+         })
+  
+}
+     
 
             </script>
     </body>
