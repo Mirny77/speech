@@ -28,7 +28,7 @@ class HistoryFilter extends QueryFilter{
         });
     }
 
-    public function search($search_string = ''){
+    public function search($search_string = '+++'){
         return $this->builder
             ->where('text', 'ilike', '%'.$search_string.'%');
     }

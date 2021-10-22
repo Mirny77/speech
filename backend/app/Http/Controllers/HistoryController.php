@@ -14,10 +14,12 @@ class HistoryController extends Controller
 
       
 
-    
+        $found =false;
         $history = History::filter($request)->where('user_id',1)->orderByDesc('created_at')->with('provider')->paginate(30);
-
-        return view('speech.index', ['history'=>$history]);
+        if(!count($history)){
+            $found = true;
+        }
+        return view('speech.index', ['history'=>$history,'found'=> $found]);
 
         
     }

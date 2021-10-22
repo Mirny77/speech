@@ -152,6 +152,11 @@ button{
                 -->
               
               </div>
+              @if($found)
+              <div class="flex  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
+                Ничего не найдено
+               </div>
+              @endif
           
                    @foreach ($history as $h)
                    <div class="flex items-center justify-center  px-12 cursor-pointer " onclick="history({{$h->id}})">
