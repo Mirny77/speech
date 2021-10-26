@@ -35,7 +35,7 @@ class YandexJob implements ShouldQueue
     protected $FORMAT_OPUS;
     protected $rand;
     protected $format;
- 
+
 
 
     public function __construct($text,$lang,$speed,$voice,$emotion,$account,$FORMAT_OPUS,$rand,$format)
@@ -58,13 +58,13 @@ class YandexJob implements ShouldQueue
      */
     public function handle()
     {
-        
+
         $url = "https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize";
-        $post = $this->format."=" .  $this->text . "&lang=".$this->lang."&voice=".$this->voice."&emotion=".$this->emotion."&speed=".$this->speed."&sampleRateHertz=48000&format=" .$this->FORMAT_OPUS;
+        $post = $this->format."= '".$this->text."'&lang=".$this->lang."&voice=".$this->voice."&emotion=".$this->emotion."&speed=".$this->speed."&sampleRateHertz=48000&format=" .$this->FORMAT_OPUS;
         $headers = ['Authorization: Api-Key '. $this->account->token];
-     
+
         $ch = curl_init();
-   
+
         curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -75,8 +75,8 @@ class YandexJob implements ShouldQueue
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        
-        
+
+
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
             print "Error: " . curl_error($ch);
@@ -86,14 +86,14 @@ class YandexJob implements ShouldQueue
             echo "Error code: " . $decodedResponse["error_code"] . "\r\n";
             echo "Error message: " . $decodedResponse["error_message"] . "\r\n";
         } else {
-            
-          
+
+
             Storage::put('public/yandex/'. $this->rand .'.ogg', $response);
             $audio = '/storage/yandex/'. $this->rand .'.ogg';
             $histoty = new HistoryController();
             $histoty->create($audio,$this->text,$this->lang,$this->voice,1,1);
             curl_close($ch);
-           
+
         }
     }
 }
