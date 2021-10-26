@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
             @media screen and (-webkit-min-device-pixel-ratio: 0) {
-             
+
                 input[type="range"]::-webkit-slider-thumb {
                     width: 15px;
                     -webkit-appearance: none;
@@ -22,7 +22,7 @@
                     background: #FFF;
                     box-shadow: -405px 0 0 400px #605E5C;
                     border-radius: 50%;
-                    
+
                 }
             }
             .color__white{
@@ -76,12 +76,12 @@
     -webkit-animation: spinner 1.5s linear infinite;
     animation: spinner 1.5s linear infinite;
   }
-  
+
   @-webkit-keyframes spinner {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
   }
-  
+
   @keyframes spinner {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -89,17 +89,17 @@
   .md\:space-x-10>:not([hidden])~:not([hidden]) {
     --tw-space-x-reverse: 0;
     /* margin-right: calc(2.5rem * var(--tw-space-x-reverse));  */
-     margin-left: 0 !important; 
+     margin-left: 0 !important;
 }
-     
+
   </style>
 
-</div> 
-     
+</div>
+
     </head>
     <body class="antialiased font-sans	 ">
         <div class="wrapper">
-          
+
             <div class="relative  bg-white">
                 <div class=" mx-auto px-4 sm:px-6">
                   <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -110,42 +110,42 @@
                         {{-- <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt=""> --}}
                       </a>
                     </div>
-              
+
                     <nav class="flex w-full pl-10   justify-start">
-                      
-              
+
+
                       <a href="/" class="text-lg mr-7 font-medium text-gray-500 hover:text-gray-900">
                         История
                       </a>
                       <a href="/speech" class="text-lg font-medium text-gray-500 hover:text-gray-900">
                         Синтез
                       </a>
-      
+
                     </nav>
                   </div>
                 </div>
                 <div class="flex flex-col	  justify-center items-center px-4 sm:px-6 text-3xl	font-semibold font-mono  py-11">
-                 Синтез речи 
+                 Синтез речи
                  <div class="flex  justify-center items-center  text-xl	font-semibold font-mono " >Выберете язык</div>
                  </div>
-                
+
             <div class="flex  justify-center items-center px-4 sm:px-6 ">
-            
+
                 <div class=" md:block">
                     <div class=" flex items-baseline space-x-4">
                       <select id="country" onchange='speech(this.value)' name="country"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
                         <option value="" @if(!isset($_GET['lang_id'])) selected @endif disabled >Выберете язык</option>
                         <option value=".ru-RU" @if(isset($_GET['lang_id']))@if($_GET['lang_id']==1 || $_GET['lang_id']==2) selected @endif @endif >Синтез речи на русском языке</option>
-                    
+
                         <option value=".en-EN" @if(isset($_GET['lang_id']))@if($_GET['lang_id']==3 || $_GET['lang_id']==4) selected @endif @endif >Синтез речи на английском языке</option>
-                       
-                     
+
+
                       </select>
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                     
+
                     </div>
                 </div>
-               
+
                 </div>
                 <div class="flex w-full sub__speech justify-center items-center px-4 sm:px-6 py-6 ">
                 <div class="hidden ru-RU w-full">
@@ -159,7 +159,7 @@
                         </div>
                       </div>
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    
+
                     </div>
                 </div>
                 <div class="hidden en-EN w-full">
@@ -172,18 +172,18 @@
                        <a href="/speech?provider=3&lang_id=4" class=" w-full py-3 text-xl flex justify-center items-center font-semibold">Microsoft</a>
                       </div>
                     </div>
-            
+
                   </div>
               </div>
-                
-           
+
+
             </div>
             <div class=" hidden form__block  mx-auto  w-1/2 sm:px-6" id="yandexRu">
             @if(isset($_GET['provider']))
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
                           <div class="grid grid-cols-6 gap-6">
-                            
+
                             <div class="col-span-6 sm:col-span-3">
                               <label for="country" class="block text-sm font-medium text-gray-700">Голос</label>
                               <select id="country" name="country" v-model="voice"  autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm" :class="validate_voice">
@@ -192,10 +192,10 @@
 
                               <option value='{{$v->value}}'  >{{$v->key}}</option>
                               @endforeach
-                              
+
                               </select>
                             </div>
-                         
+
                             @if(count($provider->emotions))
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="country" class="block text-sm font-medium text-gray-700">Эмоция</label>
@@ -204,7 +204,7 @@
                                   @foreach ($provider->emotions as $e)
                                   <option value='{{$e->value}}'>{{$e->value}}</option>
                                   @endforeach
-                               
+
                                 </select>
                               </div>
                               @endif
@@ -230,20 +230,20 @@
                   @else
                   @if ($provider->id == 3)
                   <div class="col-span-6 sm:col-span-3 pt-5">
-                   
-                    Можно искользовать SSML(без тегов "<code>speak, voice, prosody</code>"  - они прописаны по умолчанмию) и обычный текст. 
+
+                    Можно искользовать SSML(без тегов "<code>speak, voice, prosody</code>"  - они прописаны по умолчанмию) и обычный текст.
                     <div class="pt-2">Использование Speech Synthesis Markup Language (SSML) дает вам возможность контролировать, синтез речи из текста. <a href="https://cloud.yandex.ru/docs/speechkit/tts/ssml" class="text-blue-500">Документация</a></div>
 
 
 
-                  </div> 
+                  </div>
                   @else
                   <div class="col-span-6 sm:col-span-3 pt-5">
-                    Можно искользовать SSML и обычный текст. 
+                    Можно искользовать SSML и обычный текст.
                     <div class="pt-2">Использование Speech Synthesis Markup Language (SSML) дает вам возможность контролировать, синтез речи из текста. <a href="https://cloud.yandex.ru/docs/speechkit/tts/ssml" class="text-green-500">Документация</a></div>
-                  </div>  
+                  </div>
                   @endif
-                
+
                   @endif
                         <div class="col-span-6 sm:col-span-3 pt-5">
                             <label for="about" class="block text-sm font-medium text-gray-700">
@@ -256,7 +256,7 @@
                               Limit: @{{text.length}}/{{$provider->limit}} символов
                             </p>
                           </div>
-              
+
                           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                             <span class="text-red-500 mr-10" v-if="text.length >= limit">Лимит символов превышен</span>
                             <div class=" flex justify-center items-center" v-if="loader">
@@ -272,7 +272,7 @@
                                 Синтезировать
                             </button>
                           </div>
-                
+
             </div>
             @endif
           </div>
@@ -289,12 +289,12 @@
             }
             function speech(h){
               $(this).toggle("bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium R")
-              if(h == ".ru-RU"){ 
+              if(h == ".ru-RU"){
                    $(".form__block").addClass( "hidden")
                  $(".ru-RU").removeClass( "hidden")
                  $(".en-EN").addClass( "hidden")
               }
-            
+
                else{
                 $(".en-EN").removeClass( "hidden")
                  $(".ru-RU").addClass( "hidden")
@@ -302,21 +302,21 @@
 
                     }
                     }
-       
-                    
+
+
 	    var paramsString = document.location.search;
 	    var searchParams = new URLSearchParams(paramsString);
-      
+
         var p= searchParams.get("lang_id")
         if(p){
           $(".form__block").removeClass( "hidden")
         }
         if(p==1 || p==2){
-          $(".ru-RU").removeClass( "hidden")  
-          $(".en-EN").addClass( "hidden")      
+          $(".ru-RU").removeClass( "hidden")
+          $(".en-EN").addClass( "hidden")
          }else if((p==3 || p==4)){
-          $(".en-EN").removeClass( "hidden")  
-          $(".ru-RU").addClass( "hidden") 
+          $(".en-EN").removeClass( "hidden")
+          $(".ru-RU").addClass( "hidden")
          }
          if (p==1){
           $(".speech_href__red").addClass( "bg-red-500")
@@ -331,12 +331,12 @@
           $(".speech_href__green__2").addClass( "bg-green-500")
           $(".speech_href__green__2").addClass( "color__white")
          }
-  
-    </script>
-     
-        
 
-   
+    </script>
+
+
+
+
 
             <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
@@ -358,7 +358,7 @@
       ssml:false,
       validate_text:'',
       validate_voice:'',
- 
+
     },
     methods: {
 
@@ -371,21 +371,21 @@
             this.loader = false
             clearInterval(this.interval )
           }
-        } 
-       
-                  
-              
+        }
+
+
+
         )))
 
           }else{
             clearInterval(this.interval )
           }
-          
-         
-          
+
+
+
       }, 1000);
-       
-       
+
+
       },
         async Yandex(){
           if(this.text&&this.voice&&(this.text.length<=this.limit)){
@@ -393,7 +393,7 @@
             this.validate_voice=""
             let speech = {
                 voice: this.voice,
-                text: this.text,
+                text: this.text.replace(';',','),
                 speed: this.speed,
                 emotion: this.emotion,
                 ssml:this.ssml,
@@ -404,12 +404,12 @@
            this.loader = true
             await axios.post('/api/{{mb_strtolower($provider->name)}}',speech).then(((  response => {
                 if(response.data && !this.audio.length){
-                 
-                    this.Audio(response.data) 
-                  
-                    
-              
-                        
+
+                    this.Audio(response.data)
+
+
+
+
                       }
                 })))
           }else{
@@ -418,22 +418,22 @@
             }if(!this.voice){
               this.validate_voice="border-red-300"
             }
-           
+
           }
         },
         Delete(){
           if(this.audio){
             axios.post('/api/delete',{'audio':this.audio})
             this.audio=''
-           
+
           }
         }
-   
+
     },
     beforeDestroy(){
       clearInterval(this.interval )
  }
-    
+
   });
   @endif
 
