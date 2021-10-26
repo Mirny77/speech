@@ -393,7 +393,7 @@
             this.validate_voice=""
             let speech = {
                 voice: this.voice,
-                text: this.text.replace(/;/,/,/),
+                text: this.text.replace(/;/,"."),
                 speed: this.speed,
                 emotion: this.emotion,
                 ssml:this.ssml,
